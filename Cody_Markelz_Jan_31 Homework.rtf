@@ -1,0 +1,188 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 > myData <- c(93, 45, 67, 23)\
+> length(mydata)\
+Error: object 'mydata' not found\
+> length(myData)\
+[1] 4\
+> std.error <- function(x) sd(x)/length(x)\
+> std.error(myData)\
+[1] 7.494442\
+> myData.2 <- c(93, 45, 67, 23, NA, NA)\
+> length(myData.2)\
+[1] 6\
+> std.error <- (function(x) sd(x)/length(x), na.rm=T)\
+Error: unexpected ',' in "std.error <- (function(x) sd(x)/length(x),"\
+> std.error(myData.2)\
+[1] NA\
+> std.error <- (function(x) sd(x)/length(x) na.rm=T)\
+Error: unexpected symbol in "std.error <- (function(x) sd(x)/length(x) na.rm"\
+> std.error(myData.2)\
+[1] NA\
+> std.error <- function(x) sd(x)/length(x, na.rm=T)\
+> std.error(myData.2)\
+Error in length(x, na.rm = T) : \
+  2 arguments passed to 'length' which requires 1\
+> std.error <- function(x) sd(x)/length(x na.rm=T)\
+Error: unexpected symbol in "std.error <- function(x) sd(x)/length(x na.rm"\
+> std.error(myData.2)\
+Error in length(x, na.rm = T) : \
+  2 arguments passed to 'length' which requires 1\
+> ?length\
+> ?sd\
+> std.error <- function(x) sd(x, na.rm=T)/length(x)\
+> std.error(myData.2)\
+[1] 4.996295\
+> std.error <- (function(x) sd(x)/length(x), na.rm=T)\
+Error: unexpected ',' in "std.error <- (function(x) sd(x)/length(x),"\
+> std.error(myData)\
+[1] 7.494442\
+> myData.2 <- c(93, 45, 67, 23, NA, NA)\
+> length(myData.2)\
+[1] 6\
+> std.error(myData.2)\
+[1] 4.996295\
+> library(ggplot2)\
+> set.seed(1410)\
+> dsmall <-diamonds[sample(nrow(diamonds),100),]\
+> qplot(carat, price, data=diamonds)\
+> qplot(log(carat), log(price), data = diamonds)\
+> qplot(carat, x * y * z, data = diamonds)\
+> qplot(carat, price, data = dsmall, colour = color)\
+> qplot(carat, price, data = dsmall, shape = cut)\
+> qplot(caret, price, data = diamonds, alpha = I(1/10))\
+Error in eval(expr, envir, enclos) : object 'caret' not found\
+> qplot(carat, price, data = diamonds, alpha = I(1/10))\
+> qplot(carat, price, data = diamonds, alpha = I(1/100))\
+> qplot(carat, price, data = diamonds, alpha = I(1/200))\
+> qplot(carat, price, data = dsmall, geom = c("point", "smooth"), se=FALSE)\
+geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.\
+> qplot(carat, price, data = diamonds, geom = c("point", "smooth"))\
+geom_smooth: method="auto" and size of largest group is >=1000, so using gam with formula: y ~ s(x, bs = "cs"). Use 'method = x' to change the smoothing method.\
+> qplot(carat, price, data = dsmall, geom = c("point", "smooth"),\
++       span = 0.2)\
+geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.\
+> qplot(carat, price, data = dsmall, geom = c("point", "smooth"),\
++       span = 1)\
+geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.\
+> library(mgcv)\
+> qplot(carat, price, data=dsmall, geom=c("point", "smooth"), method= "gam", formula= y ~ s(x))\
+> qplot(carat, price, data = dsmall, geom = c("point", "smooth"),\
++       method = "gam", formula = y ~ s(x, bs = "cs"))\
+> library(splines)\
+> qplot(carat, price, data = dsmall, geom = c("point", "smooth"),\
++       method = "lm")\
+> qplot(carat, price, data = dsmall, geom = c("point", "smooth"),\
++       method = "lm", formula = y ~ ns(x,5))\
+> qplot(carat, price, data = dsmall, geom = c("point", "smooth"),\
++       method = "rml", formula = y ~ ns(x,5))\
+Error in get(as.character(FUN), mode = "function", envir = envir) : \
+  object 'rml' of mode 'function' was not found\
+> qplot(carat, price, data = dsmall, geom = c("point", "smooth"),\
++       method = "rlm", formula = y ~ ns(x,5))\
+Error in get(as.character(FUN), mode = "function", envir = envir) : \
+  object 'rlm' of mode 'function' was not found\
+> load(mass)\
+Error in load(mass) : object 'mass' not found\
+> install.packages("MASS")\
+Installing package(s) into \'91/Library/Frameworks/R.framework/Versions/2.15/Resources/library\'92\
+(as \'91lib\'92 is unspecified)\
+trying URL 'http://cran.rstudio.com/bin/macosx/leopard/contrib/2.15/MASS_7.3-23.tgz'\
+Content type 'application/x-gzip' length 1071375 bytes (1.0 Mb)\
+opened URL\
+==================================================\
+downloaded 1.0 Mb\
+\
+\
+The downloaded binary packages are in\
+	/var/folders/jh/6yqw6n710sj2xr9knz37tt0w0000gn/T//Rtmp8NmEev/downloaded_packages\
+> qplot(carat, price, data = dsmall, geom = c("point", "smooth"),\
++       method = "rlm", formula = y ~ ns(x,5))\
+Error in get(as.character(FUN), mode = "function", envir = envir) : \
+  object 'rlm' of mode 'function' was not found\
+> library(MASS)\
+> qplot(carat, price, data = dsmall, geom = c("point", "smooth"),\
++       method = "rlm", formula = y ~ ns(x,5))\
+> qplot(color, price / carat, data = diamonds, geom = "jitter",\
++       alpha = I(1 / 5))\
+> qplot(color, price / carat, data = diamonds, geom = "jitter",\
++       alpha = I(1 / 50))\
+> qplot(color, price / carat, data = diamonds, geom = "jitter",\
++       alpha = I(1 / 200))\
+> qplot(carat, data = diamonds, geom = "histogram")\
+stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.\
+> qplot(carat, data = diamonds, geom = "density")\
+> qplot(color, price / carat, data = diamonds, geom = "jitter",\
++       siz=10, alpha = I(1 / 50))\
+> qplot(color, price / carat, data = diamonds, geom = "jitter",\
++       siz=50, alpha = I(1 / 50))\
+> qplot(color, price / carat, data = diamonds, geom = "jitter",\
++       size=50, alpha = I(1 / 50))\
+> qplot(carat, data = diamonds, geom = "histogram", binwidth = 5,\
++       xlim = c(0,3))\
+> qplot(carat, data = diamonds, geom = "histogram", binwidth = .1,\
++       xlim = c(0,3))\
+> qplot(carat, data = diamonds, geom = "histogram", colour="grey")\
+stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.\
+> qplot(color, data = diamonds, geom = "bar")\
+> head(data)\
+  shelf flat col row    acs trt days   date   hyp int1 int2 int3\
+1     Z    1   B   1 LA2580   H   28 5/5/08 19.46 2.37 1.59 1.87\
+2     Z    1   C   1 LA1305   H   28 5/5/08 31.28 3.34 0.01 9.19\
+3     Z    1   D   1 LA1973   H   28 5/5/08 56.65 8.43 2.39 6.70\
+4     Z    1   E   1 LA2748   H   28 5/5/08 35.18 0.56 0.00 1.60\
+5     Z    1   F   1 LA2931   H   28 5/5/08 35.32 0.82 0.02 1.49\
+6     Z    1   G   1 LA1317   H   28 5/5/08 28.74 1.07 6.69 5.72\
+  int4 intleng totleng petleng leafleng leafwid leafnum ndvi\
+1 0.51    6.34   25.80   15.78    30.53   34.44       5  111\
+2 1.62   14.16   45.44   12.36    22.93   13.99       4  120\
+3 3.69   21.21   77.86   13.05    46.71   43.78       5  110\
+4 0.61    2.77   37.95    8.08    26.82   33.28       5  105\
+5 0.46    2.79   38.11    7.68    22.40   23.61       5  106\
+6 4.76   18.24   46.98   23.66    42.35   42.35       5  132\
+       lat      lon  alt         species who\
+1  -9.5167 -78.0083  740    S. pennellii Dan\
+2 -13.3833 -75.3583 3360   S. peruvianum Dan\
+3 -16.2333 -71.7000 2585   S. peruvianum Dan\
+4 -20.4833 -69.9833 1020     S. chilense Dan\
+5 -20.9167 -69.0667 2460     S. chilense Dan\
+6 -13.4167 -73.8417 2000 S. chmielewskii Dan\
+> qplot(totleng, altitude, data=data)\
+Error in eval(expr, envir, enclos) : object 'altitude' not found\
+> qplot(totleng, alt, data=data)\
+> qplot(alt, totleng, data=data)\
+> qplot(totleng, alt, data=data)\
+> qplot(alt, totleng, data=data)\
+> qplot(alt, totleng, data=data, geom= c("point", "smooth"), method="lm", formula = y ~ x)\
+> qplot(alt, totleng, data=data, geom= c("point", "smooth"), method="lm", formula = y ~ ns(x, 5))\
+> qplot(alt, totleng, data=data, geom= c("point", "smooth"), method="lm", formula = y ~ ns(x, 10))\
+> qplot(alt, totleng, data=data, geom= c("point", "smooth"), method="lm", formula = y ~ x)\
+> qplot(alt, totleng, data=data, geom= c("point", "smooth"), method="lm", formula = y ~ x, colour="trt")\
+> qplot(alt, totleng, data=data, geom= c("point", "smooth"), method="lm", formula = y ~ x, colour="data$trt")\
+> ?qplot\
+> qplot(alt, totleng, data=data, geom= c("point", "smooth"), method="lm", formula = y ~ x, colour=trt)\
+> qplot(alt, totleng, data=data, geom= c("point", "smooth"), method="lm", formula = y ~ x, colour=trt, symbol = species)\
+Error in eval(expr, envir, enclos) : object 'species' not found\
+> head(data)\
+  shelf flat col row    acs trt days   date   hyp int1 int2 int3 int4 intleng totleng petleng\
+1     Z    1   B   1 LA2580   H   28 5/5/08 19.46 2.37 1.59 1.87 0.51    6.34   25.80   15.78\
+2     Z    1   C   1 LA1305   H   28 5/5/08 31.28 3.34 0.01 9.19 1.62   14.16   45.44   12.36\
+3     Z    1   D   1 LA1973   H   28 5/5/08 56.65 8.43 2.39 6.70 3.69   21.21   77.86   13.05\
+4     Z    1   E   1 LA2748   H   28 5/5/08 35.18 0.56 0.00 1.60 0.61    2.77   37.95    8.08\
+5     Z    1   F   1 LA2931   H   28 5/5/08 35.32 0.82 0.02 1.49 0.46    2.79   38.11    7.68\
+6     Z    1   G   1 LA1317   H   28 5/5/08 28.74 1.07 6.69 5.72 4.76   18.24   46.98   23.66\
+  leafleng leafwid leafnum ndvi      lat      lon  alt         species who\
+1    30.53   34.44       5  111  -9.5167 -78.0083  740    S. pennellii Dan\
+2    22.93   13.99       4  120 -13.3833 -75.3583 3360   S. peruvianum Dan\
+3    46.71   43.78       5  110 -16.2333 -71.7000 2585   S. peruvianum Dan\
+4    26.82   33.28       5  105 -20.4833 -69.9833 1020     S. chilense Dan\
+5    22.40   23.61       5  106 -20.9167 -69.0667 2460     S. chilense Dan\
+6    42.35   42.35       5  132 -13.4167 -73.8417 2000 S. chmielewskii Dan\
+> qplot(alt, totleng, data=data, geom= c("point", "smooth"), method="lm", formula = y ~ x, colour=trt, symbol=species)\
+Error in eval(expr, envir, enclos) : object 'species' not found\
+> ?qplot\
+> qplot(alt, totleng, data=data, geom= c("point", "smooth"), method="lm", formula = y ~ x, colour=trt, shape=species)}

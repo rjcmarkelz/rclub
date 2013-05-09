@@ -1,0 +1,15 @@
+ggplot(data, aes(x= leafleng, y=leafwid, point=who, colour=who)) + 
+	xlab("Leaf Length (mm)") +
+	ylab("Leaf Width (mm)") +
+	geom_point() +
+	geom_density2d() + 
+	theme(aspect.ratio = 1) +
+	geom_vline(xintercept=38) +
+	geom_hline(yintercept=42)
+
+ggplot(data, aes(x=leafleng, y=leafwid, title= TOMATO DATA IN WORDS, colour=who)) + 
+	xlab("Leaf Length (mm)") +
+	ylab("Leaf Width (mm)") +
+	geom_point() +
+	geom_rug() +
+	theme(aspect.ratio = 1)
