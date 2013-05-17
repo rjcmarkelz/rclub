@@ -1,0 +1,138 @@
+#venndiagrams
+library(VennDiagram)
+
+grid.newpage()
+venn.plot <- draw.pairwise.venn(100, 70, 30, c("First", "Second"))
+grid.draw(venn.plot)
+
+grid.newpage()
+venn.plot <- draw.pairwise.venn(area       = 100,
+	                            area2      = 70, 
+	                            cross.area = 68,
+	                            scaled     = F,
+	                            category   = c("First", "Second"),
+	                            fill       = c("blue", "red"),
+	                            alpha      = 0.3,
+	                            lty        = "blank",
+	                            cex        = 2,
+	                            cat.cex    = 2,
+	                            cat.pos    = c(285, 105),
+	                            cat.dist   = 0.09,
+	                            cat.just   = list(c(-1, -1), c(1,1)),
+	                            ext.pos    = 30,
+	                            ext.dist   = -0.05,
+	                            ext.length = 0.85,
+	                            ext.line.lwd = 2,
+	                            ext.line.lty = "dashed")
+
+grid.draw(venn.plot)
+
+
+#three VennDiagram
+grid.newpage()
+venn.plot <- draw.triple.venn(65, 75, 85, 35, 15, 25, 5,
+                               c("First", "Second", "Third"))
+grid.draw(venn.plot)
+
+
+
+grid.newpage()
+venn.plot <- draw.triple.venn(area1         = 65,
+	                          area2         = 75,
+	                          area3         = 85,
+	                          n12           = 35,
+	                          n23           = 15,
+	                          n13           = 25,
+	                          n123          = 5, 
+	                          category      = c("First", "Second", "Third"),
+	                          cat.pos       = c(0, 40, 250),
+	                          cat.dist      = c(0.05, 0.05, 0.05),
+	                          fill          = c("blue", "red", "green"),
+	                          alpha         = 0.3,
+	                          lty           = "blank",
+	                          cex           = 2, 
+	                          cat.cex       = 2,
+	                          cat.col       = c("blue", "red", "green"))
+grid.draw(venn.plot)
+
+library(ggplot2)
+head(mtcars)
+
+
+
+
+mpg20a <- rownames(subset(mtcars, mpg > 20))
+mpg20a
+length(mpg20a)
+
+
+
+hp     <- rownames(subset(mtcars, hp > 100))
+hp <- subset(mtcars, mpg < 20)
+length(hp)
+
+overlap <- intersect(hp, mpg20a)
+length(overlap)
+
+
+
+cat("\n", "Enter")
+print("Hello, enter how many comparisons you would like to make?")
+numcompar <- scan(n=1)
+
+numcompar <- readline(prompt= "Number of Comparisons:")
+dataset <- readline(prompt= "Name of dataset:")
+firstsubset <- readline(prompt = "Subset First:")
+secondsubset <- readline(prompt= "Subset Second:")
+
+firstcompare <- rownames(subset(dataset, firstsubset)
+secondcompare <- rownames(subset(dataset, secondsubset)
+
+num = 0
+while(num<3){
+	num = num +1
+}
+name <- readline("how many overlaps would you like to do? = ")
+
+?subset
+head(play)
+length(play)
+
+?VennDiagram
+
+grid.newpage()
+
+
+grid.newpage()
+venn.plot <- draw.pairwise.venn(area       = 11,
+	                            area2      = 23, 
+	                            cross.area = 68,
+	                            scaled     = F,
+	                            category   = c("First", "Second"),
+	                            fill       = c("blue", "red"),
+	                            alpha      = 0.3,
+	                            lty        = "blank",
+	                            cex        = 2,
+	                            cat.cex    = 2,
+	                            cat.pos    = c(285, 105),
+	                            cat.dist   = 0.09,
+	                            cat.just   = list(c(-1, -1), c(1,1)),
+	                            ext.pos    = 30,
+	                            ext.dist   = -0.05,
+	                            ext.length = 0.85,
+	                            ext.line.lwd = 2,
+	                            ext.line.lty = "dashed")
+
+grid.draw(venn.plot)
+
+uni
+
+
+
+
+
+
+
+
+
+
