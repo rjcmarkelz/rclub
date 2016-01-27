@@ -1,0 +1,3 @@
+notes from today's class
+
+practice using github to fork / clone / pull / push
